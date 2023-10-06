@@ -1,4 +1,7 @@
 document.addEventListener("DOMContentLoaded", function() {
+
+    updateMessageAndButtonState();
+
     let mediaRecorder;
     let audioChunks = [];
     const recordButton = document.getElementById("recordButton");
@@ -67,6 +70,8 @@ document.addEventListener("DOMContentLoaded", function() {
             toolbar.appendChild(copyButton);
             
             transcriptDiv.appendChild(toolbar);
+
+            updateMessageAndButtonState();
         }
         
         transcriptsDiv.appendChild(transcriptDiv);
@@ -159,4 +164,28 @@ document.addEventListener("DOMContentLoaded", function() {
         }
     }
 
+    function updateMessageAndButtonState() {
+        const remainingElement = document.getElementById('remaining');
+        const messageElement = document.getElementById('message');
+        const recordButton = document.getElementById('recordButton');
+        
+        // Get the request count from the cookie
+        const requestCount = getCookie('request_count') || 0;
+        const remaining = 50 - requestCount;
+
+        // Update the message
+        remainingElement.textContent = remaining;
+
+        // If the remaining count is 0, update the message and disable the button
+        if (remaining <= 0) {
+            messageElement.textContent = 'You have reached your allowed maximum of 50 translations.';
+            recordButton.disabled = true;
+        }
+    }
+
+    function getCookie(name) {
+        const value = "; " + document.cookie;
+        const parts = value.split("; " + name + "=");
+        if (parts.length === 2) return parts.pop().split(";").shift();
+    }
 });

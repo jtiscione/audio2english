@@ -16,7 +16,7 @@ function fetchTranscripts() {
     .then(data => {
         const transcriptsDiv = document.getElementById('transcripts');
         data.forEach(transcript => {
-            displayTranscript(transcriptsDiv, transcript.filename, transcript.text);
+            displayTranscript(transcriptsDiv, transcript.filename, transcript.text, transcript.client_id);
         });
     })
     .catch(error => {
@@ -25,9 +25,14 @@ function fetchTranscripts() {
 }
 
 
-function displayTranscript(transcriptsDiv, filename, text) {
+function displayTranscript(transcriptsDiv, filename, text, client_id) {
+
     const transcriptDiv = document.createElement('div');
     transcriptDiv.className = 'transcript';
+
+    const clientIdText = document.createElement('p');
+    clientIdText.innerHTML = `<strong><em>${client_id}</em></strong>`;
+    transcriptDiv.appendChild(clientIdText);
 
     const transcriptText = document.createElement('p');
     transcriptText.textContent = text;

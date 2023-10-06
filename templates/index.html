@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Audio Recorder</title>
+    <title>Audio to English</title>
     <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
     <link rel="apple-touch-icon" sizes="180x180" href="{{ url_for('static', filename='apple-touch-icon.png') }}">
     <link rel="icon" type="image/png" sizes="32x32" href="{{ url_for('static', filename='favicon-32x32.png') }}">
@@ -10,6 +10,13 @@
     <link rel="manifest" href="{{ url_for('static', filename='site.webmanifest') }}">
 </head>
 <body>
+    <h1>Audio to English</h1>
+    <div class="opener">
+        <p>This page uses the OpenAI large-v2 <a href="https://openai.com/research/whisper">Whisper model</a> to translate recorded audio to English text.</p>
+        <p>Supposedly the model can understand speech with a word error rate of less than 50% in the following languages:</p>
+        <p>Afrikaans, Arabic, Armenian, Azerbaijani, Belarusian, Bosnian, Bulgarian, Catalan, Chinese, Croatian, Czech, Danish, Dutch, English, Estonian, Finnish, French, Galician, German, Greek, Hebrew, Hindi, Hungarian, Icelandic, Indonesian, Italian, Japanese, Kannada, Kazakh, Korean, Latvian, Lithuanian, Macedonian, Malay, Marathi, Maori, Nepali, Norwegian, Persian, Polish, Portuguese, Romanian, Russian, Serbian, Slovak, Slovenian, Spanish, Swahili, Swedish, Tagalog, Tamil, Thai, Turkish, Ukrainian, Urdu, Vietnamese, and Welsh.</p>
+    </div>
+    <div id="message" class="message">Maximum translations allowed: 50. You have <span id="remaining">50</span> remaining.</div>
     <div id="controls" class="controls">
         <button id="recordButton">Start Recording</button>
         <p id="timeLabel">Time Limit: 2 minutes</p>
@@ -17,6 +24,7 @@
     <div id="transcripts" class="transcripts">
         <p id="placeholder">Recorded audio data will be translated into English (if necessary) and displayed here.</p>
     </div>
+    <footer><a href="https://www.linkedin.com/in/jason-tiscione-75681b2/">Jason Tiscione</a></footer>
     <script src="{{ url_for('static', filename='script.js') }}"></script>
 </body>
 </html>
