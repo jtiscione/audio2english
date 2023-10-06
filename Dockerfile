@@ -1,5 +1,5 @@
 # Base image (host OS)
-from python:3.11.5
+FROM python:3.11.5
 
 # Forced to use 8000 (since Mac uses 5000 for Airplay Receiver)
 EXPOSE 8000/tcp
