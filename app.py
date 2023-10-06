@@ -1,3 +1,4 @@
+from dotenv import load_dotenv
 import openai
 from flask import Flask, render_template, request, jsonify, send_from_directory, make_response
 from pydub import AudioSegment
@@ -5,6 +6,10 @@ import os, sys, glob
 from datetime import datetime
 import random
 import string
+
+# docker build -t flask-ai-container .
+# docker run -p 8000:8000 --env-file .env flask-ai-container
+load_dotenv() # An alternative would be setting openai.api_key
 
 app = Flask(__name__)
 # app.config['EXPLAIN_TEMPLATE_LOADING'] = True
@@ -133,4 +138,4 @@ def delete_transcript(filename):
         return 'Internal Server Error', 500
 
 if __name__ == "__main__":
-    app.run(debug=True, port=8000)
+    app.run(host="0.0.0.0", port=8000)
