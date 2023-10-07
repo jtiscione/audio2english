@@ -1,4 +1,4 @@
-#!/usr/local/bin/python3
+#!/usr/local/bin/python
 from dotenv import load_dotenv
 import openai
 from flask import Flask, render_template, request, jsonify, send_from_directory, make_response
