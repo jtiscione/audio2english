@@ -13,13 +13,12 @@ COPY requirements.txt .
 # Install dependencies
 RUN pip install -r requirements.txt
 
-RUN chmod 644 app.py
-
 # Copy the content of the local src directory to the working directory
 COPY app.py .
 COPY templates ./templates
 COPY static ./static
 
+RUN chmod 644 app.py
 
 #Specify command to run on container start
 CMD ["python", "./app.py"]
