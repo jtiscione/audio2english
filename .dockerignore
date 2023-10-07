@@ -1,6 +1,9 @@
 .DS_Store
 .env
 data
+.git
+.gitignore
+.dockerignore
 .aws
 containers.json
 public-endpoint.json
