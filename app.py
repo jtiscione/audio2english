@@ -8,8 +8,8 @@ from datetime import datetime
 import random
 import string
 
-# docker build -t flask-ai-container .
-# docker run -p 8000:8000 --env-file .env flask-ai-container
+# docker build -t whisper-container .
+# docker run -p 8000:8000 --env-file .env whisper-container
 load_dotenv() # An alternative would be setting openai.api_key
 
 app = Flask(__name__)
